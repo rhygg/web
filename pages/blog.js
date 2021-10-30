@@ -28,7 +28,7 @@ export default function Blog({ posts }) {
   return (
     <>
       <Head>
-        <title>Blog - Zahid Karakaya</title>
+        <title>rhydderchc - blog</title>
       </Head>
       <Container>
         <Stack
