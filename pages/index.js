@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <Container>
       <Head>
-        <title>Home - Zahid Karakaya</title>
+        <title>rhydderchc - home</title>
       </Head>
       <Stack
         as="main"
@@ -30,14 +30,10 @@ export default function Index() {
         >
           <Heading mb={2}>Hi, I'm Zahid</Heading>
           <Text color={colorSecondary[colorMode]}>
-            I am a frontend developer based in Turkey. I have over 3 years of
-            experience designing and developing for small-scale start-ups to
-            large scale companies. I have been a designer, a SEO specialist and
-            a developer; all of these things combined help me understand the
-            goals of the code I am building. Advanced knowledge of HTML and CSS,
-            framework usage and experience, React functional components with
-            Hooks & CSS-in-JS, API and JavaScript - with attention to detail,
-            and code best practices/standards.
+            I'm a hobbyist developer, artist and currently a student.
+            I love learning new stuff. Currently using typescript, golang and rust as 
+            my tech stack. Love meeting new people. 
+            Occassionally blog, so check it out!
           </Text>
         </Flex>
       </Stack>
