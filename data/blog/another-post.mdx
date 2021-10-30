@@ -1,54 +1,51 @@
 ---
-title: "Another Test Post"
-publishedAt: "2020-03-22"
-summary: "This is the summary of our blog post! This is the summary of our blog post! This is the summary of our blog post!"
+title: "Pre-commits with husky"
+publishedAt: "2021-08-30"
+summary: "How you use husky for pre-commits"
 ---
 
-# Title Here!
+# Why?
+I'm pretty sure all of us are habituated with using `npm run {script` every time to either lint or format our project. In big projects it's kinda necessary to maintain standards just to keep all of the code neat and clean. Therefore to tend not to forget or to maintain the rules at the time of pull requests are very necessary. Therefore pre-commit hooks are one of the more valid choices. 
 
-## TOPIC_NAME
+I've faced this issue a lot of times myself, and therefore, I've adopted using husky for pre-commit hooks since I've learnt about it. 
+Husky is a pretty understandable & easy to configure hook. You can check husky out on their [github](https://github.com/typicode/husky).
 
-TOPIC_DETAILS
-blah blah blah...
+# Configuring Husky
+Configuring husky is a very straightforward process. 
 
-## Table of Contents
-
-- topic content 1 [Reference](http://dibya.org)
-- Renders actual, "native" React DOM elements
-- Allows you to escape or skip HTML (try toggling the checkboxes above)
-- If you escape or skip the HTML, no `dangerouslySetInnerHTML` is used! Yay!
-
-## Getting started
-
-Preliminary question:
-
-<button onClick={() => alert(42)}>
-  What is the answer to the mystery of universe ??
-</button>
-
-## HTML block below
-
-<blockquote>
-  This blockquote will change based on the HTML settings above.
-</blockquote>
-
-## How about some code?
-
-```js
-var React = require("react");
-var Markdown = require("react-markdown");
-React.render(
-  <Markdown source="# Your markdown here" />,
-  document.getElementById("content")
-);
+You can either install husky globally with 
+```bash
+npm i -g husky
+```
+and then use the install command to install/configure it on to the system.
+```bash
+husky install
+```
+or use `npx`
+```bash
+npx husky install
 ```
 
-Pretty neat, eh?
+Now, to add a `pre-commit` hook just do
 
-## Tables?
-
-| Feature   | Support |
-| --------- | ------- |
-| tables    | ✔       |
-| alignment | ✔       |
-| wewt      | ✔       |
+```bash
+husky add .husky/pre-commit "npm run format" # it can be any executable process.
+```
+ or 
+ ```bash
+ npx husky add .husky/pre-commit "npm run format" # it can be any executable process.
+ ```
+ 
+ You can keep on adding pre-commit hooks depending upon your needs.
+ It's pretty much that simple.
+ 
+ # What's Next?
+ Every time you're doing
+ 
+ ```bash
+ git commit -m "feat(husky): sample message"
+ ```
+ it runs the hooks before actually committing. 
+ 
+ # Alternatives to Husky
+ Husky isn't the only thing I'd actually suggest you to use. [Pre-commit](https://pre-commit.com/) is an awesome alternative to husky that manages multi-language pre-commit hooks, you can read more about them in their documentation.
