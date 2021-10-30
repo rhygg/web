@@ -28,7 +28,7 @@ export default function Index() {
           alignItems="flex-start"
           maxWidth="700px"
         >
-          <Heading mb={2}>Hi, I'm Zahid</Heading>
+          <Heading mb={2}>Henlo! This is rhydderchc!</Heading>
           <Text color={colorSecondary[colorMode]}>
             I'm a hobbyist developer, artist and currently a student.
             I love learning new stuff. Currently using typescript, golang and rust as 
