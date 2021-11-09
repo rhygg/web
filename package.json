@@ -11,6 +11,7 @@
     "@chakra-ui/icons": "^1.0.13",
     "@chakra-ui/react": "^1.6.1",
     "@emotion/react": "^11",
+    "@fontsource/fira-code", "^4.5.2",
     "@emotion/styled": "^11",
     "date-fns": "^2.16.1",
     "framer-motion": "^4",
