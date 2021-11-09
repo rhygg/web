@@ -1,0 +1,140 @@
+
+When it comes to expressive web-apps in **golang** particularly with that *django* style, nothing can surpass [beego](https://beego.me) the expressive & progressive web framework for golang.
+Now I've already talked about Fiber previously & no doubt fiber is spectacular when lightweight frameworks are being talked about.
+Beego is infinitely scalable if you ask me.
+
+# Let's make an App
+You'll have to install beego with 
+```bash
+go get github.com/beego/bee/v2
+```
+
+The ``$GOPATH/bin`` must be in your `$PATH` variable, so that the `bee` cli can work.
+
+Start by creating a new project.
+
+```bash
+bee new test
+```
+
+here's the file structure.
+```
+test
+├── conf
+│   └── app.conf
+├── controllers
+│   └── default.go
+├── main.go
+├── models
+├── routers
+│   └── router.go
+├── static
+│   ├── css
+│   ├── img
+│   └── js
+├── tests
+│   └── default_test.go
+└── views
+    └── index.tpl
+```
+
+As you can see, it's already pretty expressive. 
+
+You can easily run a bee app using
+
+```bash
+bee run #inside the root directory ( i.e., test here )
+```
+
+# Session Caching 
+
+Session caching is easy as 1, 2, 3 with beego.
+
+```go
+import (
+    "github.com/beego/beego/v2/server/web/session"
+)
+var globalSessions *session.Manager
+func init() {
+    globalSessions, _ = session.NewManager("memory", `{"cookieName":"gosessionid", "enableSetCookie,omitempty": true, "gclifetime":3600, "maxLifetime": 3600, "secure": false, "sessionIDHashFunc": "sha1", "sessionIDHashKey": "", "cookieLifeTime": 3600, "providerConfig": ""}`)
+    go globalSessions.GC()
+}
+```
+With this you can easily use sessions in your web-app.
+
+```go
+func login(w http.ResponseWriter, r *http.Request) {
+    sess, _ := globalSessions.SessionStart(w, r)
+    defer sess.SessionRelease(w)
+    username := sess.Get("username")
+    if r.Method == "GET" {
+        t, _ := template.ParseFiles("login.gtpl")
+        t.Execute(w, nil)
+    } else {
+        sess.Set("username", r.Form["username"])
+    }
+}
+```
+
+## Scaling session caching
+Good question. You want to scale session caching from a memory db to a persistent database. 
+Well that's pretty much a piece of cake with beego.
+Check out all about it [here](https://beego.me/docs/module/session.md#saving-provider-config)
+
+# i18n
+So this is one of the more **highlighted** features of beego, providing an **i18n** module.
+This actually helps making internationalized web apps easily.
+
+Install the package using 
+```bash
+go get github.com/beego/i18n
+```
+
+The format of locale files is very much like the INI format configuration file, which is basically key-value pairs. But this module has some improvements. Every language corresponds to a locale file, for example, under `conf` directory, there are two files called `locale_en-US.ini` and `locale_zh-CN.ini`.
+
+You can now, easily register locale files into your app
+
+```go
+langs := strings.Split(beego.AppConfig.String("lang::types"), "|")
+names := strings.Split(beego.AppConfig.String("lang::names"), "|")
+langTypes = make([]*langType, 0, len(langs))
+for i, v := range langs {
+    langTypes = append(langTypes, &langType{
+        Lang: v,
+        Name: names[i],
+    })
+}
+
+for _, lang := range langs {
+    beego.Trace("Loading language: " + lang)
+    if err := i18n.SetMessage(lang, "conf/"+"locale_"+lang+".ini"); err != nil {
+        beego.Error("Fail to set message file: " + err.Error())
+        return
+    }
+}
+```
+
+You can easily set cookies, based on the locale chosen and then use it.
+
+I would love to go about specifying how to internationalize your web app, in another blog!
+
+# ORM
+Yes, beego has it's own drivers for a variety of different databases, making it fast and efficient while developing incredible web applications.
+I won't go about it this blog, but i'll surely make another blog specifically on the following topic.
+You can check about the orm [here](https://beego.me/docs/mvc/model/orm.md#orm-usage) in the meantime.
+
+# Important features of beego
+Beego is similar to the Django website framework for Python. It offers a plethora of features that are common to the web application.
+
+Apart from the general MVC elements, it moreover incorporates an ORM (Object-Relationship Map) to access session handling tools, data, an in-built cache handler, logging systems, and libraries for general operations with HTTP components.
+
+Beego is familiar to Django in terms of CL (Command Line) Tools. A programmer can use bee command for developing Beego apps from the beginning or deal with the existing ones.
+Beego,
+-   Saves a lot of time
+-   Faster web app development
+-   Integrates ORM, built-in cache handler
+-   No need for third party library
+
+
+**Hope** you've understood how beego works, and why it's a good option if you're making an industry standard web application.
+Till next time! 🦄
