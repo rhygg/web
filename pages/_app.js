@@ -1,4 +1,6 @@
 import React from "react";
+import "@fontsource/montserrat/900.css"
+import "@fontsource/fira-code/600.css"
 import {
   ChakraProvider,
   ColorModeProvider,
