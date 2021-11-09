@@ -17,13 +17,11 @@ const breakpoints = createBreakpoints({
 
 const overrides = {
   ...chakraTheme,
-  fonts,
-  breakpoints,
-  fontWeights: {
-    normal: 300,
-    medium: 600,
-    bold: 700,
+  fonts: {
+    body:"Fira Code",
+    heading:"Montserrat",
   },
+  breakpoints,
   fontSizes: {
     xs: "12px",
     sm: "14px",
