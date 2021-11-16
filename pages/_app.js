@@ -1,6 +1,7 @@
 import React from "react";
 import "@fontsource/montserrat/900.css"
 import "@fontsource/fira-code/600.css"
+import "../styles/rainbow.module.css"
 import {
   ChakraProvider,
   ColorModeProvider,
@@ -53,7 +54,7 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <GlobalStyle>
-          <Component {...pageProps} />
+          <Component {...pageProps} className="rainbow"/>
         </GlobalStyle>
       </ColorModeProvider>
     </ChakraProvider>
