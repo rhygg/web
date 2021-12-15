@@ -1,0 +1,107 @@
+---
+title: "Generics in Golang!"
+publishedAt: "2021-12-15"
+summary: "golang just released v1.18-beta 🚀"
+---
+
+# Go Generics!
+
+Golang just released a beta version, offering a preview or atleast a working example of how to use generics and how it works with the compiler. 
+
+```go
+...
+
+package main
+
+import (
+	"fmt"
+)
+
+func Writer[T string | int](w T) {
+	fmt.Println(w)
+}
+func main() {
+	Writer("Hello")
+	Writer(1)
+}
+```
+as simple as it looks, it's really unique and powerful. 
+It has both the **easy** and **understandable** syntax that go already offers and more.
+It works like any other language generics.
+
+Lets assume this piece of code.
+
+```go
+
+package main
+
+import (
+	"fmt"
+)
+
+func Writer[T string | int](w T) {
+	fmt.Println(w)
+}
+func main() {
+	Writer[int]("Hello")
+	Writer(1)
+}
+```
+
+This code, as you may have guessed **returns** an error.
+
+```
+ cannot use "Hello" (untyped string constant) as int value in argument to Writer[int]
+ ```
+ 
+ To fix it, either we'd have to change the generic type to "string" or change the param of the function to int type.
+ 
+ ```go
+package main
+
+import (
+	"fmt"
+)
+
+func Writer[T string | int](w T) {
+	fmt.Println(w)
+}
+func main() {
+	Writer[string]("Hello")
+	Writer[int](1) 
+}
+```
+
+# Notes
+
+* Golang hasnt yet announced a **stable** version, therefore it is not adviced to use it in production.
+* Due to addition of generics go 1.18-beta is roughly 15% slower check out more information about it [here](https://github.com/golang/go/issues/49569)
+
+# Upgrading Version
+Due to go 1.18 being unstable, golang has made the version a seperate executable.
+You can download it [here](https://go.dev/dl)
+and use
+```bash
+go1.18beta1 
+```
+in the cli to check out the help menu.
+
+### OR
+
+Install go1.18beta using the go cli (if you already have it installed)
+
+```bash
+go install golang.org/dl/go1.18beta1@latest
+```
+and then use 
+```bash
+go1.18beta1
+```
+instead of 
+```bash
+go
+```
+**Fyi, go does not update it just installs a seperate executable for testing out the beta version**
+
+Well have fun looking at the new features, until next time 🤠
+ 
