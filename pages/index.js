@@ -66,7 +66,7 @@ export default function Index() {
           </Text>
         </Flex>
       </Stack>
-      <Center as="section" w="100%">x
+      <Center as="section" w="100%">
           <VStack align="start" spacing={8}>
              <Heading size="lg">Projects</Heading>
             <SimpleGrid columns={1} spacing={4} mt={8} w="100%">
