@@ -52,7 +52,7 @@ const Container = ({ children }) => {
               as="a"
               variant="ghost"
               p={[1, 2, 4]}
-              _hover={{ backgroundColor: navHoverBg[colorMode] }}
+              _hover={{ backgroundColor: 'pink.400'}}
             >
               Home
             </Button>
@@ -62,7 +62,7 @@ const Container = ({ children }) => {
               as="a"
               variant="ghost"
               p={[1, 2, 4]}
-              _hover={{ backgroundColor: navHoverBg[colorMode] }}
+              _hover={{ backgroundColor: 'pink.400' }}
             >
               Blog
             </Button>
