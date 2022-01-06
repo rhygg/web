@@ -2,9 +2,11 @@ import React from "react";
 import NextLink from "next/link";
 import { useColorMode, Heading, Text, Flex, Box, Link } from "@chakra-ui/react";
 import { parseISO, format } from "date-fns";
+import { RoughNotation } from "react-rough-notation";
 
 const BlogPost = ({ title, publishedAt, summary, slug }) => {
   const { colorMode } = useColorMode();
+  const [hover, setHover] = React.useState(false)
   const secondaryTextColor = {
     liight: "gray.700",
     dark: "gray.400",
@@ -25,9 +27,17 @@ const BlogPost = ({ title, publishedAt, summary, slug }) => {
               align="flex-start"
               justifyContent="start"
               width="100%"
+               onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
             >
               <Heading size="md" as="h3" mb={1} fontWeight="medium">
-                {title}
+                <RoughNotation
+            type="highlight"
+            color="#ED64A6"
+            show={hover}
+          >
+            {title}
+          </RoughNotation>
               </Heading>
             </Flex>
 
