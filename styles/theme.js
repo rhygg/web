@@ -18,7 +18,7 @@ const breakpoints = createBreakpoints({
 const overrides = {
   ...chakraTheme,
   fonts: {
-    body:"consolas",
+    body:"Fira Code",
     heading:"Montserrat",
   },
   breakpoints,
