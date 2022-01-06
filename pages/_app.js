@@ -45,7 +45,7 @@ const GlobalStyle = ({ children }) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider resetCSS theme={customTheme}>
+    <ChakraProvider theme={customTheme}>
       <ColorModeProvider
         options={{
           initialColorMode: "light",
