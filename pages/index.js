@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useColorMode, Heading, Text, Flex, Stack, VStack, SimpleGrid, Center } from "@chakra-ui/react";
 import Container from "../components/Container";
 import ProjectCard from "../components/ProjectCard";
+import Recently from '../components/RecentlyPlayed'
 const projects = [
   {
     key: 1,
@@ -65,9 +66,9 @@ export default function Index() {
           </Text>
         </Flex>
       </Stack>
-       <Center as="section" w="100%">
+      <Center as="section" w="100%">
+       <Heading size="lg">Projects</Heading>
           <VStack align="start" spacing={8}>
-            <Heading size="lg">Projects</Heading>
             <SimpleGrid columns={1} spacing={4} mt={8} w="100%">
               {projects.map((project) => (
                 <ProjectCard
@@ -80,6 +81,12 @@ export default function Index() {
                 />
               ))}
             </SimpleGrid>
+          </VStack>
+          </Center>
+          <Heading size="lg">Recently Played</Heading>
+          <Center as="section" w="100%">
+          <VStack align="start" spacing={8}>
+            <Recently />
           </VStack>
           </Center>
     </Container>

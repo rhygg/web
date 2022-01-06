@@ -10,7 +10,7 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-
+import ReadProgress from '../components/ReadingProgress'
 import Container from "../components/Container";
 
 export default function BlogLayout({ children, frontMatter }) {
@@ -21,11 +21,13 @@ export default function BlogLayout({ children, frontMatter }) {
   };
   const router = useRouter();
   const slug = router.asPath.replace("/blog", "");
+  const target = React.createRef();
   return (
     <Container>
       <Head>
         <title>${slug} - Blog - rhydderchc</title>
       </Head>
+       <>
       <Stack
         as="article"
         spacing={8}
@@ -74,6 +76,9 @@ export default function BlogLayout({ children, frontMatter }) {
         </Flex>
         {children}
       </Stack>
+    
+     <ReadProgress target={target} />
+     </>
     </Container>
   );
 }
