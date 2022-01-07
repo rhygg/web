@@ -83,9 +83,9 @@ export default function Index() {
             </SimpleGrid>
           </VStack>
           </Center>
-          <Heading size="lg">Recently Played</Heading>
           <Center as="section" w="100%">
           <VStack align="start" spacing={8}>
+              <Heading size="lg">Recently Played</Heading>
             <Recently />
           </VStack>
           </Center>
