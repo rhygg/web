@@ -3,7 +3,7 @@ import { useColorMode, Button, Flex, Box } from "@chakra-ui/react";
 import NextLink from "next/link";
 import styled from "@emotion/styled";
 import DarkModeSwitch from "./DarkModeSwitch";
-
+import Spotify from './Spotify'
 const Container = ({ children }) => {
   const { colorMode } = useColorMode();
 
@@ -45,8 +45,10 @@ const Container = ({ children }) => {
         mt={8}
         mb={[0, 0, 8]}
         mx="auto"
+        color={color[colorMode]}
       >
         <Box>
+        <Spotify />
           <NextLink href="/" passHref>
             <Button
               as="a"
