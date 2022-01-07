@@ -66,6 +66,7 @@ export default function Index() {
           </Text>
         </Flex>
       </Stack>
+      <VStack spacing={8}>
       <Center as="section" w="100%">
           <VStack align="start" spacing={8}>
              <Heading size="lg">Projects</Heading>
@@ -89,6 +90,7 @@ export default function Index() {
             <Recently />
           </VStack>
           </Center>
+</VStack>
     </Container>
   );
 }
